@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Profile - Griffith</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.45);
+            transform: scaleX(-1);
+        }
+
+        .exit-btn-outside {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 10;
+            background: rgba(18, 20, 26, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s;
+        }
+
+        .exit-btn-outside:hover {
+            background: rgba(30, 34, 42, 0.8);
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .exit-btn-outside:active {
+            transform: scale(0.95);
+        }
+
+        .discord-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(18, 20, 26, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            width: 340px;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Аватарка в круге */
+        .avatar-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 18px auto;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: #23a55a;
+            border: 3px solid #12141a;
+            border-radius: 50%;
+        }
+
+        .username {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-info {
+            color: #949ba4;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        /* Твоя фраза в самом низу */
+        .bottom-quote {
+            font-size: 13px;
+            color: #b5bac1;
+            letter-spacing: 0.3px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop class="bg-video">
+        <source src="{{ url_for('static', filename='bg.mp4') }}" type="video/mp4">
+    </video>
+
+    <a href="{{ url_for('index') }}" class="exit-btn-outside" title="На главную">🚪</a>
+
+    <div class="discord-card">
+        <div class="avatar-container">
+            <img src="{{ url_for('static', filename='avatar.jpg') }}" alt="Griffith">
+            <div class="status-dot"></div>
+        </div>
+
+        <div class="username">Griffith</div>
+        <div class="tag-info">rembo1488300 • he/him</div>
+
+        <div class="bottom-quote">
+               какой красивый день
+              чтобы подарить цветок
+        </div>
+    </div>
+
+</body>
+</html>
