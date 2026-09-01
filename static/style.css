@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #02040a, #050b1a, #0a1128, #02040a);
+    background-size: 400% 400%;
+    animation: gradientAnimation 12s ease infinite;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hover-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    filter: brightness(1.1);
+}
+
+.hover-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 4, 10, 0.05);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 1;
+}
+
+.hover-image.active {
+    opacity: 0.35;
+}
+
+.hover-image-container.active-bg::after {
+    opacity: 1;
+}
+
+.intro-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    z-index: 2;
+}
+
+.intro-text {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
+    border-right: 3px solid #38bdf8;
+    padding-right: 5px;
+    animation: blinkCursor 0.75s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { border-color: #38bdf8; }
+    50% { border-color: transparent; }
+}
+
+.title {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+    margin-bottom: auto;
+    margin-top: 60px;
+    z-index: 2;
+    position: relative;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 40px;
+    border-top: 2px solid rgba(255, 255, 255, 0.8);
+    padding-top: 30px;
+    z-index: 2;
+    position: relative;
+}
+
+.game-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blue-line {
+    position: absolute;
+    top: -33px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 4px;
+    background-color: #38bdf8;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.9), 0 0 10px rgba(56, 189, 248, 0.8);
+    opacity: 0;
+    transition: width 0.4s ease, opacity 0.3s ease;
+}
+
+.game-item:hover .blue-line {
+    width: 100%;
+    opacity: 1;
+}
+
+.game-link {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+    transition: all 0.3s ease;
+}
+
+.game-link:hover {
+    color: #38bdf8;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.9);
+    transform: translateY(-2px);
+}
+
+
+.game-content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.repack-info {
+    background: rgba(2, 4, 10, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 25px 40px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: left;
+    width: 100%;
+}
+
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    color: #ffffff;
+    padding: 12px 35px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    transition: all 0.3s ease;
+    letter-spacing: 1.5px;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.9);
+}
+.discord-corner-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.discord-corner-btn:hover {
+    background: #5865F2;
+    border-color: #5865F2;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+}
